@@ -6,7 +6,7 @@ Phase 1: Gotta classify them all
 
 Data was sourced from Kaggle and can be found here: https://www.kaggle.com/vishalsubbiah/Pokémon-images-and-types
 
-Dataset contain all Pokémon from Generation 1 to 7, and consists of 809 unique images
+Dataset contains all Pokémon from Generation 1 to 7, and consists of 809 unique images.
 
 <p align='center'>
 <img src='images/some_pokemon.png'>
@@ -81,7 +81,7 @@ Trainable params: 3,007,361
 Non-trainable params: 0
 _________________________________________________________________
 
-Summary:
+### Summary:
 
 <p align='center'>
 <img src='images/base_loss.png'>
@@ -166,7 +166,7 @@ Trainable params: 1,050,625
 Non-trainable params: 14,714,688
 _________________________________________________________________
 
-Summary:
+### Summary:
 
 <p align='center'>
 <img src='images/model_loss.png'>
