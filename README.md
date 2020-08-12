@@ -203,6 +203,9 @@ Next steps:
 * Create custom tuning parameters according to Pokémon class.
 * Build GUI that allows user to catch their very own Pokémon.
 
+### Link to presentation
+
+https://github.com/thomaspatrickhill/Mod_5_Project/blob/master/photon%20presentation%20-%20mod%205.pdf
 
 ### Sources
 
