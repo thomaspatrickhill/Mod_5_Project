@@ -1,6 +1,7 @@
-## Predicting Pokémon: A use case for rapid ideation on character design
+# Predicting Pokémon: A use case for creative classification and ideation with machine learning
 
-Phase 1: Gotta classify them all
+* Phase 1: Gotta classify them all
+* Phase 2: Gotta generate them all
 
 ### Data Sourcing Content
 
@@ -14,12 +15,12 @@ Dataset contains all Pokémon from Generation 1 to 7, and consists of 809 unique
 
 ### Business Case
 
-Design and innovation firms are asked to come up with mock ups and pitches in a fast moving environment.  They also require in-house or freelance resources that are taken away from current paying work. A GAN (Generative Adversarial Network) could be used to generate images quickly that can be used for rapid character prototyping so that the design team can iterate on concepts in a more efficient manner.
+Design and innovation firms are asked to come up with mock ups and pitches in a fast moving environment.  They also require in-house or freelance resources that are taken away from current paying work. 
 
-Phase 1 of this project consists of classifying whether a given Pokémon has evolved using a Convolutional Neural Network.
+This produces 2 questions:
 
-
-This process will in turn enable Phase 2 of the project, which is the creation of a GAN using the same dataset with a goal of producing novel Pokémon.
+* Can classifying evolved Pokémon be used to as a proof of concept for design consistency?
+* Can generating Pokémon be used as a proof of concept for rapid ideation and character prototyping?
 
 
 ### Data Cleaning/Visualization
@@ -48,38 +49,13 @@ Images were converted from PNG to JPG to remove the transparency layer and make 
 
 All images are uniform in size: 120x120
 
+## Phase 1 of this project consists of classifying whether a given Pokémon has evolved using a Convolutional Neural Network
+
 ### Models:
 
 ## Base CNN Model
 
 Model: "sequential"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-conv2d (Conv2D)              (None, 222, 222, 64)      1792      
-_________________________________________________________________
-max_pooling2d (MaxPooling2D) (None, 111, 111, 64)      0         
-_________________________________________________________________
-conv2d_1 (Conv2D)            (None, 109, 109, 32)      18464     
-_________________________________________________________________
-max_pooling2d_1 (MaxPooling2 (None, 54, 54, 32)        0         
-_________________________________________________________________
-flatten (Flatten)            (None, 93312)             0         
-_________________________________________________________________
-dense (Dense)                (None, 32)                2986016   
-_________________________________________________________________
-dropout (Dropout)            (None, 32)                0         
-_________________________________________________________________
-dense_1 (Dense)              (None, 32)                1056      
-_________________________________________________________________
-dropout_1 (Dropout)          (None, 32)                0         
-_________________________________________________________________
-dense_2 (Dense)              (None, 1)                 33        
-=================================================================
-Total params: 3,007,361
-Trainable params: 3,007,361
-Non-trainable params: 0
-_________________________________________________________________
 
 ### Summary:
 
@@ -112,59 +88,6 @@ _________________________________________________________________
 Context: VGG16 is a convolutional neural network model proposed by K. Simonyan and A. Zisserman from the University of Oxford in the paper “Very Deep Convolutional Networks for Large-Scale Image Recognition”.
 
 Model: "model_3"
-_________________________________________________________________
-Layer (type)                 Output Shape              Param #   
-=================================================================
-input_4 (InputLayer)         [(None, 224, 224, 3)]     0         
-_________________________________________________________________
-block1_conv1 (Conv2D)        (None, 224, 224, 64)      1792      
-_________________________________________________________________
-block1_conv2 (Conv2D)        (None, 224, 224, 64)      36928     
-_________________________________________________________________
-block1_pool (MaxPooling2D)   (None, 112, 112, 64)      0         
-_________________________________________________________________
-block2_conv1 (Conv2D)        (None, 112, 112, 128)     73856     
-_________________________________________________________________
-block2_conv2 (Conv2D)        (None, 112, 112, 128)     147584    
-_________________________________________________________________
-block2_pool (MaxPooling2D)   (None, 56, 56, 128)       0         
-_________________________________________________________________
-block3_conv1 (Conv2D)        (None, 56, 56, 256)       295168    
-_________________________________________________________________
-block3_conv2 (Conv2D)        (None, 56, 56, 256)       590080    
-_________________________________________________________________
-block3_conv3 (Conv2D)        (None, 56, 56, 256)       590080    
-_________________________________________________________________
-block3_pool (MaxPooling2D)   (None, 28, 28, 256)       0         
-_________________________________________________________________
-block4_conv1 (Conv2D)        (None, 28, 28, 512)       1180160   
-_________________________________________________________________
-block4_conv2 (Conv2D)        (None, 28, 28, 512)       2359808   
-_________________________________________________________________
-block4_conv3 (Conv2D)        (None, 28, 28, 512)       2359808   
-_________________________________________________________________
-block4_pool (MaxPooling2D)   (None, 14, 14, 512)       0         
-_________________________________________________________________
-block5_conv1 (Conv2D)        (None, 14, 14, 512)       2359808   
-_________________________________________________________________
-block5_conv2 (Conv2D)        (None, 14, 14, 512)       2359808   
-_________________________________________________________________
-block5_conv3 (Conv2D)        (None, 14, 14, 512)       2359808   
-_________________________________________________________________
-block5_pool (MaxPooling2D)   (None, 7, 7, 512)         0         
-_________________________________________________________________
-global_average_pooling2d_13  (None, 512)               0         
-_________________________________________________________________
-dense_21 (Dense)             (None, 1024)              525312    
-_________________________________________________________________
-dense_22 (Dense)             (None, 512)               524800    
-_________________________________________________________________
-dense_23 (Dense)             (None, 1)                 513       
-=================================================================
-Total params: 15,765,313
-Trainable params: 1,050,625
-Non-trainable params: 14,714,688
-_________________________________________________________________
 
 ### Summary:
 
@@ -191,17 +114,64 @@ _________________________________________________________________
 
 #### Significantly better than the baseline metric (52%)
 
-
-### Conclusion
+### Phase 1 Conclusion
 
 The VGG16 model worked significantly better than the baseline model.  This means that the data used to train the model is viable for using in a GAN to produce novel Pokémon in Phase 2 of the project.
 
-Next steps:
+## Phase 2 of this project, consists of the creation of a GAN using the same dataset with a goal of producing novel Pokémon
 
-* Take this dataset and build a GAN.
-* Set up cloud computing for GPU powered training and generative output.
-* Create custom tuning parameters according to Pokémon class.
-* Build GUI that allows user to catch their very own Pokémon.
+### Model - DCGAN
+
+In order to accomplish building a GAN:
+
+* I created a DCGAN that was built using the tutorial written by Jeff Heaton
+* Deep Convolutional Generative Adversarial Networks are similar to a CNN in that they work with images and use layers
+* The difference here is that the two models are adversaries, much like a Pokémon arena
+* The Generator (Ash) will create new Pokémon in an attempt to “fool” the Discriminator
+* The Discriminator (Battle Judge) will then “judge” the images it receives and determine if they are, in fact, Pokémon
+* Dataset: 809 Pokémon
+
+<p align='center'>
+<img src='images/gen_and_disc.png'>
+</p>
+
+* All models were trained with mini-batch stochastic gradient descent (SGD) with a mini-batch size of 128.
+* All weights were initialized from a zero-centered Normal distribution with standard deviation 0.02.
+* The Generator uses ReLu activations as well as tanh for the final layer
+* The Discriminator uses lRelu (leaky Relu) for all activation layers
+* To implement, I used 3 different notebooks - 2 on Google Colab and 1 on Paperspace Gradient
+
+<p align='center'>
+<img src='images/Deep-convolutional-generative-adversarial-networks-DCGAN-for-generative-model-of-BF-NSP.png'>
+</p>
+
+### Results
+
+* So it turns out building a stable DCGAN is really challenging
+* I managed to generate Pokémon-esque blobs of pixels
+
+<p align='center'>
+<img src='images/1.png'>
+</p>
+
+* Performance of the model was relatively static in that my generator loss and discriminator loss maintained the same scores throughout
+* 52,000 epochs
+* gen_loss=0.6922744512557983, disc_loss=1.007383942604065, 0:00:00.63
+
+### Limitations included
+
+* Cloud computing is complex to set up
+* Free GPU’s are great until they aren’t
+* Limited understanding of how to further tune hyperparameters
+* Stable, High-Res GAN’s are TOUGH
+
+### Next Steps:
+
+* LEARN LEARN LEARN
+* Successfully set up project to run with Google Cloud TPU’s
+* Generate actual Pokémon
+* Take generated Pokémon and run them through the CNN to see how they would be classified
+* Tell everyone I’ve ever met that I did it
 
 ### Link to presentation
 
@@ -212,7 +182,7 @@ https://github.com/thomaspatrickhill/Mod_5_Project/blob/master/photon%20presenta
 * https://pokemondb.net/evolution
 * https://medium.com/@shikharsrivastava_14544/face-recognition-using-transfer-learning-with-vgg16-3caeca4a916e
 * https://www.freecodecamp.org/news/how-to-build-an-image-type-convertor-in-six-lines-of-python-d63c3c33d1db/
-
+* https://github.com/jeffheaton/t81_558_deep_learning/blob/master/t81_558_class_07_2_Keras_gan.ipynb
 
 
 
