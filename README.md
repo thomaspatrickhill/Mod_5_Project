@@ -175,6 +175,10 @@ In order to accomplish building a GAN:
 
 ### Link to presentation
 
+* Phase 1 and 2:
+https://github.com/thomaspatrickhill/Mod_5_Project/blob/master/Phase%201%20and%202%20Presentation.pdf
+
+* Phase 1
 https://github.com/thomaspatrickhill/Mod_5_Project/blob/master/photon%20presentation%20-%20mod%205.pdf
 
 ### Sources
