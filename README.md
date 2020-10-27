@@ -49,11 +49,11 @@ Images were converted from PNG to JPG to remove the transparency layer and make 
 
 All images are uniform in size: 120x120
 
-## Phase 1 of this project consists of classifying whether a given Pokémon has evolved using a Convolutional Neural Network
+## Phase 1: Classifying whether a given Pokémon has evolved using a Convolutional Neural Network
 
-### Models:
+## Models:
 
-## Base CNN Model
+### Base CNN Model
 
 Model: "sequential"
 
@@ -118,7 +118,7 @@ Model: "model_3"
 
 The VGG16 model worked significantly better than the baseline model.  This means that the data used to train the model is viable for using in a GAN to produce novel Pokémon in Phase 2 of the project.
 
-## Phase 2 of this project, consists of the creation of a GAN using the same dataset with a goal of producing novel Pokémon
+## Phase 2: Creation of a GAN using the same dataset with a goal of producing novel Pokémon
 
 ### Model - DCGAN
 
@@ -151,7 +151,7 @@ In order to accomplish building a GAN:
 * I managed to generate Pokémon-esque blobs of pixels
 
 <p align='center'>
-<img src='images/1.png'>
+<img src='images/generated_pokemon.png'>
 </p>
 
 * Performance of the model was relatively static in that my generator loss and discriminator loss maintained the same scores throughout
@@ -174,6 +174,12 @@ In order to accomplish building a GAN:
 * Tell everyone I’ve ever met that I did it
 
 ### Link to presentation
+
+* Phase 1 and 2:
+
+https://github.com/thomaspatrickhill/Mod_5_Project/blob/master/Phase%201%20and%202%20Presentation.pdf
+
+* Phase 1:
 
 https://github.com/thomaspatrickhill/Mod_5_Project/blob/master/photon%20presentation%20-%20mod%205.pdf
 
